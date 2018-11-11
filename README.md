@@ -1,5 +1,5 @@
 
-# Lista de Tarefas APP - Todo List
+# Lista de Tarefas - Todo List
 This project was bootstrapped with Create React App.
 
 ## Características do projeto (features)
