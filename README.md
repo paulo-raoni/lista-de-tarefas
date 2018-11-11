@@ -1,11 +1,11 @@
 
 # Lista de Tarefas - Todo List
-This project was bootstrapped with Create React App.
+> Projeto feito com Create React App - This project was bootstrapped with Create React App.
 
-## Características do projeto (features)
+## Características do projeto (project features)
 
-- Lista de tarefas simples (simple todo list)
-- Algumas animações UI (some UI animations)
+- Uma aplicação simples para listar tarefas - simple todo list
+- Algumas animações CSS - some CSS animations
 
 ## License
 
