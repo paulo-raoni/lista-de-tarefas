@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Tarefas from "./Tarefas";
-import AddTarefa from './AddTarefa';
-import Footer from  './Footer'
+import Tarefas from "./components/Tarefas";
+import AddTarefa from './components/AddTarefa';
+import Footer from  './components/Footer'
 import styled from 'styled-components';
 
 class App extends Component {
