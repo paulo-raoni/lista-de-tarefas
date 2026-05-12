@@ -7,6 +7,17 @@
 - Uma aplicação simples para listar tarefas - simple todo list
 - Algumas animações CSS - some CSS animations
 
+## Quickstart
+
+```
+npm install
+npm run dev        # http://localhost:5173
+npm run build
+npm run preview
+npm run typecheck
+npm run lint
+```
+
 ## License
 
 Copyright (c) 2018 by Paulo Raoni Costa Bezerra
