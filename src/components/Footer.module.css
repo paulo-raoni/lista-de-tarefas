@@ -7,8 +7,8 @@
 }
 
 .wrapper a {
-  color: #4caf50;
-  text-decoration: none;
+  color: #2e7d32;
+  text-decoration: underline;
 }
 
 .wrapper a:hover,
