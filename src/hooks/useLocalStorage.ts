@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 const KEY_PREFIX = 'lista-de-tarefas:v1:'
 
@@ -26,11 +26,6 @@ export function useLocalStorage<T>(
 ): [T, (next: T | ((prev: T) => T)) => void] {
   const storageKey = KEY_PREFIX + key
   const [value, setValue] = useState<T>(() => readStored(storageKey, initial))
-
-  const valueRef = useRef(value)
-  useEffect(() => {
-    valueRef.current = value
-  }, [value])
 
   useEffect(() => {
     try {
