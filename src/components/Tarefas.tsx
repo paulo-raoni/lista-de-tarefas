@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import type { Tarefa } from '../types'
 import styles from './Tarefas.module.css'
 
@@ -10,13 +11,14 @@ interface TarefasProps {
 const REMOVE_DELAY_MS = 500
 
 const Tarefas = ({ tarefas, onRemove }: TarefasProps) => {
+  const { t } = useTranslation()
   const [removingIds, setRemovingIds] = useState<Set<string>>(() => new Set())
   const timeoutsRef = useRef<Map<string, ReturnType<typeof setTimeout>>>(new Map())
 
   useEffect(() => {
     const timeouts = timeoutsRef.current
     return () => {
-      timeouts.forEach((t) => clearTimeout(t))
+      timeouts.forEach((handle) => clearTimeout(handle))
       timeouts.clear()
     }
   }, [])
@@ -36,7 +38,7 @@ const Tarefas = ({ tarefas, onRemove }: TarefasProps) => {
   }
 
   if (tarefas.length === 0) {
-    return <p className={styles.empty}>Não há tarefas ainda.</p>
+    return <p className={styles.empty}>{t('tarefas.empty')}</p>
   }
 
   return (
@@ -49,11 +51,11 @@ const Tarefas = ({ tarefas, onRemove }: TarefasProps) => {
             <button
               type="button"
               className={styles.itemButton}
-              aria-label={`Excluir tarefa: ${tarefa.conteudo}`}
+              aria-label={t('tarefas.deleteAria', { conteudo: tarefa.conteudo })}
               onClick={() => handleClick(tarefa.id)}
             >
               <span className={styles.conteudo}>{tarefa.conteudo}</span>
-              <span className={styles.excluir}>EXCLUIR?</span>
+              <span className={styles.excluir}>{t('tarefas.delete')}</span>
             </button>
           </li>
         )

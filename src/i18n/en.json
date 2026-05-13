@@ -1,0 +1,21 @@
+{
+  "app": {
+    "title": "Todo List App"
+  },
+  "addTarefa": {
+    "label": "Type a todo below and press enter to add:"
+  },
+  "tarefas": {
+    "empty": "No todos yet.",
+    "delete": "DELETE?",
+    "deleteAria": "Delete todo: {{conteudo}}"
+  },
+  "footer": {
+    "copyright": "Copyright © 2018 by"
+  },
+  "lang": {
+    "label": "Language",
+    "pt-BR": "Português (Brasil)",
+    "en": "English"
+  }
+}
