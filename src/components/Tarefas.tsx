@@ -40,25 +40,25 @@ const Tarefas = ({ tarefas, onRemove }: TarefasProps) => {
   }
 
   return (
-    <div className={styles.list}>
+    <ul className={styles.list}>
       {tarefas.map((tarefa) => {
         const isRemoving = removingIds.has(tarefa.id)
-        const className = isRemoving ? `${styles.item} ${styles.deleted}` : styles.item
+        const itemClass = isRemoving ? `${styles.item} ${styles.deleted}` : styles.item
         return (
-          <button
-            key={tarefa.id}
-            type="button"
-            data-id={tarefa.id}
-            className={className}
-            aria-label={`Excluir tarefa: ${tarefa.conteudo}`}
-            onClick={() => handleClick(tarefa.id)}
-          >
-            <span className={styles.conteudo}>{tarefa.conteudo}</span>
-            <span className={styles.excluir}>EXCLUIR?</span>
-          </button>
+          <li key={tarefa.id} data-id={tarefa.id} className={itemClass}>
+            <button
+              type="button"
+              className={styles.itemButton}
+              aria-label={`Excluir tarefa: ${tarefa.conteudo}`}
+              onClick={() => handleClick(tarefa.id)}
+            >
+              <span className={styles.conteudo}>{tarefa.conteudo}</span>
+              <span className={styles.excluir}>EXCLUIR?</span>
+            </button>
+          </li>
         )
       })}
-    </div>
+    </ul>
   )
 }
 

@@ -7,7 +7,7 @@ import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
   {
-    ignores: ['dist', 'node_modules', '.claude', '.devcontainer', '.omc'],
+    ignores: ['coverage', 'dist', 'node_modules', '.claude', '.devcontainer', '.omc'],
   },
   {
     files: ['**/*.{ts,tsx}'],

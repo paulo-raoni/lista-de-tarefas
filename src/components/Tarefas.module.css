@@ -26,35 +26,49 @@
 .item {
   position: relative;
   display: block;
-  width: 100%;
-  text-align: left;
-  padding: 0.75rem 1rem;
   margin: 0;
   background: transparent;
   border: 1px solid #8bc34a;
   border-top: none;
-  border-radius: 0;
-  cursor: pointer;
   transition: 0.5s all;
-  font: inherit;
-  color: inherit;
 }
 
-.item:last-of-type {
+.item:last-child {
   border-bottom: 2px solid #8bc34a;
 }
 
 .item:hover,
-.item:focus-visible {
+.item:focus-within {
   transform: translateX(20px);
   background-color: orange;
 }
 
 .item:hover .excluir,
-.item:focus-visible .excluir {
+.item:focus-within .excluir {
   display: block;
   filter: grayscale();
   right: 20px;
+}
+
+.itemButton {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+.itemButton:focus {
+  outline: none;
+}
+
+.itemButton:focus-visible {
+  outline: 2px solid #4caf50;
+  outline-offset: -2px;
 }
 
 .conteudo {
