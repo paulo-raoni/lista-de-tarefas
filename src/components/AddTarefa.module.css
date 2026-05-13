@@ -7,21 +7,23 @@
 
 .label {
   font-weight: 500;
+  color: var(--text);
 }
 
 .input {
   width: 100%;
   padding: 0.6rem 0.75rem;
   font-size: 1rem;
-  border: 1px solid #c5c5c5;
-  border-bottom: 2px solid #8bc34a;
+  border: 1px solid var(--border);
+  border-bottom: 2px solid var(--accent-soft);
   border-radius: 4px;
-  background: #fff;
+  background: var(--bg-surface);
+  color: var(--text);
   outline: none;
   transition: border-color 0.2s;
 }
 
 .input:focus {
-  border-bottom-color: #2e7d32;
-  box-shadow: 0 1px 0 0 #2e7d32;
+  border-bottom-color: var(--accent);
+  box-shadow: 0 1px 0 0 var(--accent);
 }

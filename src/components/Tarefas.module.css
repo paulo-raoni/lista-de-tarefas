@@ -20,7 +20,7 @@
   margin: 1rem 0 3rem;
   padding: 0;
   list-style: none;
-  border-top: 1px solid #8bc34a;
+  border-top: 1px solid var(--border-soft);
 }
 
 .item {
@@ -28,19 +28,19 @@
   display: block;
   margin: 0;
   background: transparent;
-  border: 1px solid #8bc34a;
+  border: 1px solid var(--border-soft);
   border-top: none;
   transition: 0.5s all;
 }
 
 .item:last-child {
-  border-bottom: 2px solid #8bc34a;
+  border-bottom: 2px solid var(--border-soft);
 }
 
 .item:hover,
 .item:focus-within {
   transform: translateX(20px);
-  background-color: orange;
+  background-color: var(--bg-hover-strong);
 }
 
 .item:hover .excluir,
@@ -67,7 +67,7 @@
 }
 
 .itemButton:focus-visible {
-  outline: 2px solid #2e7d32;
+  outline: 2px solid var(--accent);
   outline-offset: -2px;
 }
 
@@ -77,9 +77,9 @@
 
 .excluir {
   display: none;
-  color: white;
+  color: var(--text-inverse);
   font-size: 20px;
-  box-shadow: 2px 2px 15px lightgray;
+  box-shadow: 2px 2px 15px var(--shadow);
   position: absolute;
   right: -100px;
   top: 10px;
@@ -87,8 +87,8 @@
 }
 
 .deleted {
-  color: #fff;
-  background-color: red;
+  color: var(--text-inverse);
+  background-color: var(--accent-deleted);
   animation-name: slideSide;
   animation-duration: 1s;
 }
@@ -100,6 +100,6 @@
 
 .empty {
   text-align: center;
-  color: #666;
+  color: var(--text-empty);
   margin: 1rem 0;
 }
