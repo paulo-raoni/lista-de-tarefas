@@ -1,4 +1,5 @@
 import { useState, type ChangeEvent, type FormEvent } from 'react'
+import { useTranslation } from 'react-i18next'
 import styles from './AddTarefa.module.css'
 
 interface AddTarefaProps {
@@ -8,6 +9,7 @@ interface AddTarefaProps {
 const INPUT_ID = 'add-tarefa-input'
 
 const AddTarefa = ({ onAdd }: AddTarefaProps) => {
+  const { t } = useTranslation()
   const [conteudo, setConteudo] = useState('')
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -28,7 +30,7 @@ const AddTarefa = ({ onAdd }: AddTarefaProps) => {
   return (
     <form className={styles.wrapper} onSubmit={handleSubmit}>
       <label className={styles.label} htmlFor={INPUT_ID}>
-        Escreva abaixo uma tarefa e digite enter para adicionar:
+        {t('addTarefa.label')}
       </label>
       <input
         id={INPUT_ID}

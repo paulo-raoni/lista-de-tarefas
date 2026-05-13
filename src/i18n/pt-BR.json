@@ -1,0 +1,21 @@
+{
+  "app": {
+    "title": "Lista de Tarefas App"
+  },
+  "addTarefa": {
+    "label": "Escreva abaixo uma tarefa e digite enter para adicionar:"
+  },
+  "tarefas": {
+    "empty": "Não há tarefas ainda.",
+    "delete": "EXCLUIR?",
+    "deleteAria": "Excluir tarefa: {{conteudo}}"
+  },
+  "footer": {
+    "copyright": "Copyright © 2018 by"
+  },
+  "lang": {
+    "label": "Idioma",
+    "pt-BR": "Português (Brasil)",
+    "en": "English"
+  }
+}

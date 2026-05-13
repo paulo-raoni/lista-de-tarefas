@@ -8,6 +8,19 @@
     <meta name="description" content="Lista de tarefas — Todo list app" />
     <link rel="manifest" href="/manifest.json" />
     <title>Lista de Tarefas App</title>
+    <script>
+      ;(function () {
+        try {
+          var supported = ['pt-BR', 'en']
+          var stored = window.localStorage.getItem('lista-de-tarefas:v1:lang')
+          if (stored && supported.indexOf(stored) !== -1) {
+            document.documentElement.lang = stored
+          }
+        } catch (e) {
+          /* ignore */
+        }
+      })()
+    </script>
   </head>
   <body>
     <noscript> You need to enable JavaScript to run this app. </noscript>
