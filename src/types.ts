@@ -1,4 +1,4 @@
 export interface Tarefa {
-  id: number
+  id: string
   conteudo: string
 }

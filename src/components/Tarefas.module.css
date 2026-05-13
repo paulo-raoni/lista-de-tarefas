@@ -1,0 +1,91 @@
+@keyframes slideSide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(1500px);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50px);
+  }
+}
+
+.list {
+  margin: 1rem 0 3rem;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid #8bc34a;
+}
+
+.item {
+  position: relative;
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  margin: 0;
+  background: transparent;
+  border: 1px solid #8bc34a;
+  border-top: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: 0.5s all;
+  font: inherit;
+  color: inherit;
+}
+
+.item:last-of-type {
+  border-bottom: 2px solid #8bc34a;
+}
+
+.item:hover,
+.item:focus-visible {
+  transform: translateX(20px);
+  background-color: orange;
+}
+
+.item:hover .excluir,
+.item:focus-visible .excluir {
+  display: block;
+  filter: grayscale();
+  right: 20px;
+}
+
+.conteudo {
+  font-weight: bold;
+}
+
+.excluir {
+  display: none;
+  color: white;
+  font-size: 20px;
+  box-shadow: 2px 2px 15px lightgray;
+  position: absolute;
+  right: -100px;
+  top: 10px;
+  transition: 0.5s all;
+}
+
+.deleted {
+  color: #fff;
+  background-color: red;
+  animation-name: slideSide;
+  animation-duration: 1s;
+}
+
+.deleted ~ .item:not(.deleted) {
+  animation-name: slideUp;
+  animation-duration: 1s;
+}
+
+.empty {
+  text-align: center;
+  color: #666;
+  margin: 1rem 0;
+}

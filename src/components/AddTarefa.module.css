@@ -1,0 +1,27 @@
+.wrapper {
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-weight: 500;
+}
+
+.input {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #c5c5c5;
+  border-bottom: 2px solid #8bc34a;
+  border-radius: 4px;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  border-bottom-color: #4caf50;
+  box-shadow: 0 1px 0 0 #4caf50;
+}

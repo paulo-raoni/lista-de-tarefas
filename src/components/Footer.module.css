@@ -1,0 +1,17 @@
+.wrapper {
+  margin-top: 4rem;
+  padding: 1rem 0;
+  text-align: center;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.wrapper a {
+  color: #4caf50;
+  text-decoration: none;
+}
+
+.wrapper a:hover,
+.wrapper a:focus-visible {
+  text-decoration: underline;
+}
