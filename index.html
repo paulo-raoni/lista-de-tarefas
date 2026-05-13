@@ -11,8 +11,11 @@
     <script>
       ;(function () {
         try {
+          var supported = ['pt-BR', 'en']
           var stored = window.localStorage.getItem('lista-de-tarefas:v1:lang')
-          if (stored) document.documentElement.lang = stored
+          if (stored && supported.indexOf(stored) !== -1) {
+            document.documentElement.lang = stored
+          }
         } catch (e) {
           /* ignore */
         }

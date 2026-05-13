@@ -2,18 +2,7 @@ import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import ptBR from './pt-BR.json'
 import en from './en.json'
-
-const STORAGE_KEY = 'lista-de-tarefas:v1:lang'
-const DEFAULT_LNG = 'pt-BR'
-
-const readStoredLang = (): string => {
-  if (typeof window === 'undefined') return DEFAULT_LNG
-  try {
-    return window.localStorage.getItem(STORAGE_KEY) ?? DEFAULT_LNG
-  } catch {
-    return DEFAULT_LNG
-  }
-}
+import { DEFAULT_LNG, isSupportedLang, readStoredLang, STORAGE_KEY } from './storage'
 
 void i18n.use(initReactI18next).init({
   resources: {
@@ -27,6 +16,7 @@ void i18n.use(initReactI18next).init({
 })
 
 i18n.on('languageChanged', (lng) => {
+  if (!isSupportedLang(lng)) return
   if (typeof window === 'undefined') return
   try {
     window.localStorage.setItem(STORAGE_KEY, lng)
@@ -37,4 +27,4 @@ i18n.on('languageChanged', (lng) => {
 })
 
 export default i18n
-export { STORAGE_KEY as LANG_STORAGE_KEY, DEFAULT_LNG }
+export { DEFAULT_LNG, STORAGE_KEY as LANG_STORAGE_KEY } from './storage'

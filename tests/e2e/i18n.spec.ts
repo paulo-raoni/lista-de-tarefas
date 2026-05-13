@@ -55,6 +55,18 @@ test('language preference persists across reloads and sets <html lang>', async (
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Todo List App')
 })
 
+test('document title reflects the active language', async ({ page }) => {
+  await expect(page).toHaveTitle('Lista de Tarefas App')
+
+  await page.getByRole('button', { name: /idioma/i }).click()
+  await page.getByRole('button', { name: 'English' }).click()
+
+  await expect(page).toHaveTitle('Todo List App')
+
+  await page.reload()
+  await expect(page).toHaveTitle('Todo List App')
+})
+
 test('clicking outside the panel closes it', async ({ page }) => {
   const trigger = page.getByRole('button', { name: /idioma/i })
   await trigger.click()

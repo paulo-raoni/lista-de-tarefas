@@ -5,8 +5,8 @@ import i18n from '../i18n'
 
 afterEach(async () => {
   cleanup()
-  window.localStorage.clear()
   if (i18n.language !== 'pt-BR') {
     await i18n.changeLanguage('pt-BR')
   }
+  window.localStorage.clear()
 })
