@@ -4,6 +4,7 @@
   --bg-elevated: #ffffff;
   --bg-hover: #f5f5f5;
   --bg-hover-strong: #ffa500;
+  --text-on-hover-strong: #1a1a1a;
 
   --text: #333333;
   --text-muted: #555555;
@@ -28,6 +29,7 @@
   --bg-elevated: #2a2a2a;
   --bg-hover: #2a2a2a;
   --bg-hover-strong: #b35900;
+  --text-on-hover-strong: #ffffff;
 
   --text: #e6e6e6;
   --text-muted: #b0b0b0;

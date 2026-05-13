@@ -48,5 +48,23 @@ for (const theme of ['light', 'dark'] as const) {
       )
       expect(blocking, JSON.stringify(blocking, null, 2)).toEqual([])
     })
+
+    test(`no serious or critical violations with a focused tarefa (${theme})`, async ({ page }) => {
+      await gotoFreshWithTheme(page, theme)
+      await expect(page.locator('html')).toHaveAttribute('data-theme', theme)
+
+      // Focus the first task button — triggers :focus-within on the <li>,
+      // which applies the same hover background + paired text color.
+      await page.getByRole('button', { name: 'Excluir tarefa: Tarefa exemplo 1' }).focus()
+
+      const { violations } = await new AxeBuilder({ page })
+        .withTags(['wcag2a', 'wcag2aa'])
+        .analyze()
+
+      const blocking = violations.filter((v) =>
+        BLOCKING_IMPACTS.includes(v.impact as BlockingImpact),
+      )
+      expect(blocking, JSON.stringify(blocking, null, 2)).toEqual([])
+    })
   })
 }

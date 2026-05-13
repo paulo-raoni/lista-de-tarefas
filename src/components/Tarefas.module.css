@@ -41,6 +41,7 @@
 .item:focus-within {
   transform: translateX(20px);
   background-color: var(--bg-hover-strong);
+  color: var(--text-on-hover-strong);
 }
 
 .item:hover .excluir,
@@ -77,7 +78,7 @@
 
 .excluir {
   display: none;
-  color: var(--text-inverse);
+  color: var(--text-on-hover-strong);
   font-size: 20px;
   box-shadow: 2px 2px 15px var(--shadow);
   position: absolute;
