@@ -12,6 +12,9 @@
 /build
 /dist
 
+# TypeScript build info (composite projects emit this even with --noEmit)
+*.tsbuildinfo
+
 # misc
 .DS_Store
 .env.local
