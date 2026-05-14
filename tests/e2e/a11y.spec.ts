@@ -7,7 +7,7 @@ type BlockingImpact = (typeof BLOCKING_IMPACTS)[number]
 async function gotoFreshWithTheme(page: import('@playwright/test').Page, theme: 'light' | 'dark') {
   await page.addInitScript((t) => {
     window.localStorage.setItem('lista-de-tarefas:v1:theme', t)
-    window.localStorage.removeItem('lista-de-tarefas:v1:tarefas')
+    window.localStorage.removeItem('lista-de-tarefas:v1:tasks')
   }, theme)
   await page.goto('/')
 }
@@ -28,7 +28,7 @@ for (const theme of ['light', 'dark'] as const) {
       expect(blocking, JSON.stringify(blocking, null, 2)).toEqual([])
     })
 
-    test(`no serious or critical violations after adding several tarefas (${theme})`, async ({
+    test(`no serious or critical violations after adding several tasks (${theme})`, async ({
       page,
     }) => {
       await gotoFreshWithTheme(page, theme)

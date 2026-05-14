@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test'
 
-const STORAGE_KEY = 'lista-de-tarefas:v1:tarefas'
+const STORAGE_KEY = 'lista-de-tarefas:v1:tasks'
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/')

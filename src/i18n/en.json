@@ -2,15 +2,15 @@
   "app": {
     "title": "Todo List App"
   },
-  "addTarefa": {
+  "addTask": {
     "label": "Type a todo below and press enter to add:",
     "placeholder": "e.g., Buy milk",
     "button": "Add"
   },
-  "tarefas": {
+  "tasks": {
     "empty": "No todos yet.",
     "delete": "DELETE?",
-    "deleteAria": "Delete todo: {{conteudo}}"
+    "deleteAria": "Delete todo: {{content}}"
   },
   "footer": {
     "copyright": "Copyright © {{startYear}}–{{currentYear}} by"

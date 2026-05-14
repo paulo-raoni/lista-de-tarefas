@@ -44,8 +44,8 @@
   color: var(--text-on-hover-strong);
 }
 
-.item:hover .excluir,
-.item:focus-within .excluir {
+.item:hover .delete,
+.item:focus-within .delete {
   display: block;
   filter: grayscale();
   right: 20px;
@@ -72,11 +72,11 @@
   outline-offset: -2px;
 }
 
-.conteudo {
+.content {
   font-weight: bold;
 }
 
-.excluir {
+.delete {
   display: none;
   color: var(--text-on-hover-strong);
   font-size: 20px;

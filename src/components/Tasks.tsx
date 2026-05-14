@@ -1,16 +1,16 @@
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import type { Tarefa } from '../types'
-import styles from './Tarefas.module.css'
+import type { Task } from '../types'
+import styles from './Tasks.module.css'
 
-interface TarefasProps {
-  tarefas: Tarefa[]
+interface TasksProps {
+  tasks: Task[]
   onRemove: (id: string) => void
 }
 
 const REMOVE_DELAY_MS = 500
 
-const Tarefas = ({ tarefas, onRemove }: TarefasProps) => {
+const Tasks = ({ tasks, onRemove }: TasksProps) => {
   const { t } = useTranslation()
   const [removingIds, setRemovingIds] = useState<Set<string>>(() => new Set())
   const timeoutsRef = useRef<Map<string, ReturnType<typeof setTimeout>>>(new Map())
@@ -37,25 +37,25 @@ const Tarefas = ({ tarefas, onRemove }: TarefasProps) => {
     timeoutsRef.current.set(id, handle)
   }
 
-  if (tarefas.length === 0) {
-    return <p className={styles.empty}>{t('tarefas.empty')}</p>
+  if (tasks.length === 0) {
+    return <p className={styles.empty}>{t('tasks.empty')}</p>
   }
 
   return (
     <ul className={styles.list}>
-      {tarefas.map((tarefa) => {
-        const isRemoving = removingIds.has(tarefa.id)
+      {tasks.map((task) => {
+        const isRemoving = removingIds.has(task.id)
         const itemClass = isRemoving ? `${styles.item} ${styles.deleted}` : styles.item
         return (
-          <li key={tarefa.id} data-id={tarefa.id} className={itemClass}>
+          <li key={task.id} data-id={task.id} className={itemClass}>
             <button
               type="button"
               className={styles.itemButton}
-              aria-label={t('tarefas.deleteAria', { conteudo: tarefa.conteudo })}
-              onClick={() => handleClick(tarefa.id)}
+              aria-label={t('tasks.deleteAria', { content: task.content })}
+              onClick={() => handleClick(task.id)}
             >
-              <span className={styles.conteudo}>{tarefa.conteudo}</span>
-              <span className={styles.excluir}>{t('tarefas.delete')}</span>
+              <span className={styles.content}>{task.content}</span>
+              <span className={styles.delete}>{t('tasks.delete')}</span>
             </button>
           </li>
         )
@@ -64,4 +64,4 @@ const Tarefas = ({ tarefas, onRemove }: TarefasProps) => {
   )
 }
 
-export default Tarefas
+export default Tasks
