@@ -16,6 +16,7 @@ const SunIcon = (props: SVGProps<SVGSVGElement>) => (
     strokeLinejoin="round"
     aria-hidden="true"
     focusable="false"
+    data-icon="sun"
     {...props}
   >
     <circle cx="12" cy="12" r="4" />
@@ -35,6 +36,7 @@ const MoonIcon = (props: SVGProps<SVGSVGElement>) => (
     strokeLinejoin="round"
     aria-hidden="true"
     focusable="false"
+    data-icon="moon"
     {...props}
   >
     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
@@ -53,6 +55,7 @@ const MonitorIcon = (props: SVGProps<SVGSVGElement>) => (
     strokeLinejoin="round"
     aria-hidden="true"
     focusable="false"
+    data-icon="monitor"
     {...props}
   >
     <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
@@ -61,7 +64,7 @@ const MonitorIcon = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-const ICONS: Record<ThemeChoice, (p: SVGProps<SVGSVGElement>) => JSX.Element> = {
+const OPTION_ICONS: Record<ThemeChoice, (p: SVGProps<SVGSVGElement>) => JSX.Element> = {
   light: SunIcon,
   dark: MoonIcon,
   system: MonitorIcon,
@@ -69,7 +72,7 @@ const ICONS: Record<ThemeChoice, (p: SVGProps<SVGSVGElement>) => JSX.Element> = 
 
 const ThemeSwitcher = () => {
   const { t } = useTranslation()
-  const { choice, setChoice } = useTheme()
+  const { choice, resolved, setChoice } = useTheme()
   const [open, setOpen] = useState(false)
   const triggerRef = useRef<HTMLButtonElement>(null)
   const panelRef = useRef<HTMLDivElement>(null)
@@ -106,7 +109,7 @@ const ThemeSwitcher = () => {
     triggerRef.current?.focus()
   }
 
-  const TriggerIcon = ICONS[choice]
+  const TriggerIcon = resolved === 'dark' ? MoonIcon : SunIcon
 
   return (
     <div className={styles.wrapper}>
@@ -114,6 +117,7 @@ const ThemeSwitcher = () => {
         ref={triggerRef}
         type="button"
         className={styles.trigger}
+        data-choice={choice}
         aria-label={t('theme.label')}
         aria-haspopup="true"
         aria-expanded={open}
@@ -121,6 +125,7 @@ const ThemeSwitcher = () => {
         onClick={() => setOpen((prev) => !prev)}
       >
         <TriggerIcon />
+        {choice === 'system' && <span className={styles.autoIndicator} aria-hidden="true" />}
       </button>
       {open && (
         <div
@@ -131,7 +136,7 @@ const ThemeSwitcher = () => {
           aria-label={t('theme.label')}
         >
           {THEME_CHOICES.map((value) => {
-            const Icon = ICONS[value]
+            const Icon = OPTION_ICONS[value]
             const isActive = value === choice
             return (
               <button
