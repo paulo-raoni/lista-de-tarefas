@@ -60,8 +60,8 @@ export function useTodos(): UseTodos {
     (content: string) => {
       const trimmed = content.trim()
       if (!trimmed) return
-      const novo: Task = { id: crypto.randomUUID(), content: trimmed }
-      setTasks((prev) => [...prev, novo])
+      const newTask: Task = { id: crypto.randomUUID(), content: trimmed }
+      setTasks((prev) => [...prev, newTask])
     },
     [setTasks],
   )

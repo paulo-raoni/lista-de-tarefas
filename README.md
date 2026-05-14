@@ -73,18 +73,17 @@ tests/e2e/              # Playwright specs (smoke, a11y, i18n, theme)
 
 ## Modernization journey
 
-The 2026 modernization landed in 8 phases:
+The 2026 modernization landed in 9 phases:
 
 1. **CRA → Vite + TypeScript strict** — drop CRA's webpack 4 toolchain, gain a fast dev server.
-2. **Functional + CSS Modules** — class components → hooks, drop styled-components and the Materialize CDN, fix the `deleteTarefa` reindexing bug, restore a11y.
+2. **Functional + CSS Modules** — class components → hooks, drop styled-components and the Materialize CDN, fix a state-mutation bug in the task list, restore a11y.
 3. **Unit tests** — Vitest + React Testing Library covering hooks and components.
 4. **CI** — GitHub Actions running typecheck / lint / format / test / build on every PR.
-5. **E2E + a11y** — Playwright smoke tests + axe-core a11y gate, zero serious/critical violations.
+5. **E2E + a11y** — Playwright smoke tests + axe-core a11y gate, zero serious/critical violations across light and dark themes.
 6. **i18n** — PT-BR + EN via react-i18next, accessible language switcher, persistence.
 7. **Dark mode** — light / dark / system themes via CSS custom properties, anti-flash inline script, WCAG-AA contrast.
-8. **Polish** — README, manifest, favicons, Open Graph + Twitter card meta, dynamic footer year.
-
-A future Phase 9 will rename Portuguese identifiers throughout the codebase (file names, types, variables, translation keys) to English, with a one-time localStorage migration to avoid losing existing users' saved tasks.
+8. **Polish** — README, manifest, favicons, Open Graph + Twitter card meta, dynamic footer year, refined theme switcher.
+9. **English-only refactor** — rename every Portuguese identifier (types, files, hook surface, i18n keys, CSS classes, localStorage key) to English, with a one-time migration so existing users keep their saved tasks. PT-BR translation values remain (localization, not source language).
 
 ## License
 
