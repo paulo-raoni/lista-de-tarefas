@@ -1,4 +1,4 @@
-export interface Tarefa {
+export interface Task {
   id: string
-  conteudo: string
+  content: string
 }

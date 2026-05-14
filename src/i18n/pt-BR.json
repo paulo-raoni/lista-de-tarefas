@@ -2,15 +2,15 @@
   "app": {
     "title": "Lista de Tarefas App"
   },
-  "addTarefa": {
+  "addTask": {
     "label": "Escreva abaixo uma tarefa e digite enter para adicionar:",
     "placeholder": "Ex.: Comprar leite",
     "button": "Adicionar"
   },
-  "tarefas": {
+  "tasks": {
     "empty": "Não há tarefas ainda.",
     "delete": "EXCLUIR?",
-    "deleteAria": "Excluir tarefa: {{conteudo}}"
+    "deleteAria": "Excluir tarefa: {{content}}"
   },
   "footer": {
     "copyright": "Copyright © {{startYear}}–{{currentYear}} por"

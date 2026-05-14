@@ -1,13 +1,13 @@
 import { act, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import Tarefas from './Tarefas'
+import Tasks from './Tasks'
 
 const sample = [
-  { id: 'a', conteudo: 'first' },
-  { id: 'b', conteudo: 'second' },
+  { id: 'a', content: 'first' },
+  { id: 'b', content: 'second' },
 ]
 
-describe('Tarefas', () => {
+describe('Tasks', () => {
   beforeEach(() => {
     vi.useFakeTimers()
   })
@@ -16,13 +16,13 @@ describe('Tarefas', () => {
     vi.useRealTimers()
   })
 
-  it('shows the empty state when there are no tarefas', () => {
-    render(<Tarefas tarefas={[]} onRemove={() => {}} />)
+  it('shows the empty state when there are no tasks', () => {
+    render(<Tasks tasks={[]} onRemove={() => {}} />)
     expect(screen.getByText('Não há tarefas ainda.')).toBeInTheDocument()
   })
 
   it('renders items as a list of buttons with descriptive aria-labels', () => {
-    render(<Tarefas tarefas={sample} onRemove={() => {}} />)
+    render(<Tasks tasks={sample} onRemove={() => {}} />)
     expect(screen.getByRole('list')).toBeInTheDocument()
     expect(screen.getAllByRole('listitem')).toHaveLength(2)
     expect(screen.getByRole('button', { name: 'Excluir tarefa: first' })).toBeInTheDocument()
@@ -31,7 +31,7 @@ describe('Tarefas', () => {
 
   it('calls onRemove only after the animation delay', () => {
     const onRemove = vi.fn()
-    render(<Tarefas tarefas={sample} onRemove={onRemove} />)
+    render(<Tasks tasks={sample} onRemove={onRemove} />)
 
     fireEvent.click(screen.getByRole('button', { name: 'Excluir tarefa: first' }))
     expect(onRemove).not.toHaveBeenCalled()
@@ -50,7 +50,7 @@ describe('Tarefas', () => {
 
   it('guards against double-clicks scheduling two removals', () => {
     const onRemove = vi.fn()
-    render(<Tarefas tarefas={sample} onRemove={onRemove} />)
+    render(<Tasks tasks={sample} onRemove={onRemove} />)
     const btn = screen.getByRole('button', { name: 'Excluir tarefa: first' })
 
     fireEvent.click(btn)
@@ -64,7 +64,7 @@ describe('Tarefas', () => {
 
   it('clears pending timeouts on unmount', () => {
     const onRemove = vi.fn()
-    const { unmount } = render(<Tarefas tarefas={sample} onRemove={onRemove} />)
+    const { unmount } = render(<Tasks tasks={sample} onRemove={onRemove} />)
 
     fireEvent.click(screen.getByRole('button', { name: 'Excluir tarefa: first' }))
     unmount()
