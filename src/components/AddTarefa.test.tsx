@@ -11,7 +11,46 @@ describe('AddTarefa', () => {
     expect(input.tagName).toBe('INPUT')
   })
 
-  it('calls onAdd with trimmed content when submitting via Enter', async () => {
+  it('shows a translated placeholder', () => {
+    render(<AddTarefa onAdd={() => {}} />)
+    const input = screen.getByLabelText(/escreva abaixo uma tarefa/i)
+    expect(input).toHaveAttribute('placeholder', 'Ex.: Comprar leite')
+  })
+
+  it('renders an Add submit button that is disabled while the input is empty', () => {
+    render(<AddTarefa onAdd={() => {}} />)
+    const button = screen.getByRole('button', { name: /adicionar/i })
+    expect(button).toHaveAttribute('type', 'submit')
+    expect(button).toBeDisabled()
+  })
+
+  it('enables the Add button once the input has non-whitespace content', async () => {
+    const user = userEvent.setup()
+    render(<AddTarefa onAdd={() => {}} />)
+    const button = screen.getByRole('button', { name: /adicionar/i })
+    const input = screen.getByLabelText(/escreva abaixo uma tarefa/i)
+
+    await user.type(input, '   ')
+    expect(button).toBeDisabled()
+
+    await user.type(input, 'hello')
+    expect(button).toBeEnabled()
+  })
+
+  it('calls onAdd with trimmed content when the button is clicked', async () => {
+    const user = userEvent.setup()
+    const onAdd = vi.fn()
+    render(<AddTarefa onAdd={onAdd} />)
+    const input = screen.getByLabelText(/escreva abaixo uma tarefa/i)
+
+    await user.type(input, '  buy milk  ')
+    await user.click(screen.getByRole('button', { name: /adicionar/i }))
+
+    expect(onAdd).toHaveBeenCalledOnce()
+    expect(onAdd).toHaveBeenCalledWith('buy milk')
+  })
+
+  it('still calls onAdd when submitting via Enter', async () => {
     const user = userEvent.setup()
     const onAdd = vi.fn()
     render(<AddTarefa onAdd={onAdd} />)
@@ -24,7 +63,7 @@ describe('AddTarefa', () => {
     expect(onAdd).toHaveBeenCalledWith('hello')
   })
 
-  it('does not call onAdd when input is empty or whitespace-only', async () => {
+  it('does not call onAdd when input is empty or whitespace', async () => {
     const user = userEvent.setup()
     const onAdd = vi.fn()
     render(<AddTarefa onAdd={onAdd} />)
@@ -36,13 +75,13 @@ describe('AddTarefa', () => {
     expect(onAdd).not.toHaveBeenCalled()
   })
 
-  it('clears the input after a successful add', async () => {
+  it('clears the input after a successful add via the button', async () => {
     const user = userEvent.setup()
     render(<AddTarefa onAdd={() => {}} />)
     const input = screen.getByLabelText(/escreva abaixo uma tarefa/i) as HTMLInputElement
 
     await user.type(input, 'task')
-    await user.keyboard('{Enter}')
+    await user.click(screen.getByRole('button', { name: /adicionar/i }))
 
     expect(input.value).toBe('')
   })

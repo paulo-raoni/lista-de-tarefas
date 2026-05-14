@@ -3,7 +3,9 @@
     "title": "Todo List App"
   },
   "addTarefa": {
-    "label": "Type a todo below and press enter to add:"
+    "label": "Type a todo below and press enter to add:",
+    "placeholder": "e.g., Buy milk",
+    "button": "Add"
   },
   "tarefas": {
     "empty": "No todos yet.",

@@ -27,18 +27,26 @@ const AddTarefa = ({ onAdd }: AddTarefaProps) => {
     setConteudo('')
   }
 
+  const isDisabled = conteudo.trim().length === 0
+
   return (
     <form className={styles.wrapper} onSubmit={handleSubmit}>
       <label className={styles.label} htmlFor={INPUT_ID}>
         {t('addTarefa.label')}
       </label>
-      <input
-        id={INPUT_ID}
-        className={styles.input}
-        type="text"
-        onChange={handleChange}
-        value={conteudo}
-      />
+      <div className={styles.row}>
+        <input
+          id={INPUT_ID}
+          className={styles.input}
+          type="text"
+          placeholder={t('addTarefa.placeholder')}
+          onChange={handleChange}
+          value={conteudo}
+        />
+        <button type="submit" className={styles.button} disabled={isDisabled}>
+          {t('addTarefa.button')}
+        </button>
+      </div>
     </form>
   )
 }

@@ -22,6 +22,21 @@ test('adds a tarefa via Enter and clears the input', async ({ page }) => {
   await expect(input).toHaveValue('')
 })
 
+test('adds a tarefa via the Add button and clears the input', async ({ page }) => {
+  const input = page.getByLabel(/escreva abaixo uma tarefa/i)
+  const button = page.getByRole('button', { name: /adicionar/i })
+
+  await expect(button).toBeDisabled()
+  await input.fill('Button-added task')
+  await expect(button).toBeEnabled()
+  await button.click()
+
+  await expect(
+    page.getByRole('button', { name: 'Excluir tarefa: Button-added task' }),
+  ).toBeVisible()
+  await expect(input).toHaveValue('')
+})
+
 test('clicking a tarefa removes it after the animation delay', async ({ page }) => {
   const target = page.getByRole('button', { name: 'Excluir tarefa: Tarefa exemplo 1' })
   await target.click()

@@ -35,6 +35,11 @@ test('switching to EN updates UI strings live and closes the panel', async ({ pa
 
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Todo List App')
   await expect(page.getByLabel(/type a todo below/i)).toBeVisible()
+  await expect(page.getByLabel(/type a todo below/i)).toHaveAttribute(
+    'placeholder',
+    'e.g., Buy milk',
+  )
+  await expect(page.getByRole('button', { name: 'Add' })).toBeVisible()
   await expect(page.getByRole('button', { name: 'Delete todo: Tarefa exemplo 1' })).toBeVisible()
   await expect(page.getByRole('button', { name: /language/i })).toHaveAttribute(
     'aria-expanded',
