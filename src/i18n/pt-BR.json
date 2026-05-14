@@ -3,7 +3,9 @@
     "title": "Lista de Tarefas App"
   },
   "addTarefa": {
-    "label": "Escreva abaixo uma tarefa e digite enter para adicionar:"
+    "label": "Escreva abaixo uma tarefa e digite enter para adicionar:",
+    "placeholder": "Ex.: Comprar leite",
+    "button": "Adicionar"
   },
   "tarefas": {
     "empty": "Não há tarefas ainda.",
