@@ -4,10 +4,31 @@
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="/checkList.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#ffffff" />
     <meta name="description" content="Lista de tarefas — Todo list app" />
     <link rel="manifest" href="/manifest.json" />
     <title>Lista de Tarefas App</title>
+    <script>
+      ;(function () {
+        try {
+          var stored = window.localStorage.getItem('lista-de-tarefas:v1:theme')
+          var valid = stored === 'light' || stored === 'dark' || stored === 'system'
+          var choice = valid ? stored : 'system'
+          var resolved =
+            choice === 'system'
+              ? window.matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light'
+              : choice
+          document.documentElement.dataset.theme = resolved
+          document.documentElement.style.colorScheme = resolved
+          var meta = document.querySelector('meta[name="theme-color"]')
+          if (meta) meta.content = resolved === 'dark' ? '#121212' : '#ffffff'
+        } catch (e) {
+          /* ignore */
+        }
+      })()
+    </script>
     <script>
       ;(function () {
         try {

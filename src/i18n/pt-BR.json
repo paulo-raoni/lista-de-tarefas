@@ -17,5 +17,11 @@
     "label": "Idioma",
     "pt-BR": "Português (Brasil)",
     "en": "English"
+  },
+  "theme": {
+    "label": "Tema",
+    "light": "Claro",
+    "dark": "Escuro",
+    "system": "Sistema"
   }
 }

@@ -6,9 +6,9 @@
 .trigger {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  justify-content: center;
   font: inherit;
-  padding: 0.35rem 0.6rem;
+  padding: 0.35rem 0.5rem;
   border: 1px solid var(--border);
   border-radius: 4px;
   background: var(--bg-surface);
@@ -25,17 +25,11 @@
   outline-offset: 1px;
 }
 
-.code {
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-
 .panel {
   position: absolute;
   top: calc(100% + 0.4rem);
   right: 0;
-  min-width: 12rem;
+  min-width: 10rem;
   background: var(--bg-elevated);
   border: 1px solid var(--border);
   border-radius: 6px;
@@ -47,6 +41,9 @@
 }
 
 .option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font: inherit;
   text-align: left;
   padding: 0.5rem 0.75rem;
@@ -70,8 +67,4 @@
 .optionActive {
   font-weight: 600;
   color: var(--accent);
-}
-
-.optionActive::before {
-  content: '✓ ';
 }
