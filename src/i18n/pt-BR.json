@@ -11,7 +11,7 @@
     "deleteAria": "Excluir tarefa: {{conteudo}}"
   },
   "footer": {
-    "copyright": "Copyright © 2018 by"
+    "copyright": "Copyright © {{startYear}}–{{currentYear}} por"
   },
   "lang": {
     "label": "Idioma",

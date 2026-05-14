@@ -4,6 +4,7 @@
 }
 
 .trigger {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -23,6 +24,17 @@
 .trigger:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 1px;
+}
+
+.autoIndicator {
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 1px solid var(--bg-surface);
 }
 
 .panel {
